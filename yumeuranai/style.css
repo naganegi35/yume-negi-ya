@@ -26,8 +26,10 @@ h2{font-size:1.1rem;margin:24px 0 12px}
 .search-box{background:var(--card);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:20px;margin-bottom:24px}
 .search-box input{width:100%;padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.25);color:var(--text);font-size:1rem;margin-bottom:4px}
 .search-box input::placeholder{color:rgba(237,233,254,.5)}
-.search-idle{text-align:center;font-size:2.6rem;margin-bottom:10px;animation:float 3s ease-in-out infinite}
+.oracle{display:block;margin:0 auto 12px;width:170px;height:170px;border-radius:50%;border:3px solid rgba(255,255,255,.35);box-shadow:0 6px 30px rgba(124,58,237,.45);animation:float 3s ease-in-out infinite;object-fit:cover}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.oracle-pop{animation:pop .5s ease}
+@keyframes pop{0%{transform:scale(.7);opacity:.3}60%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 .result-head{text-align:center;font-weight:bold;font-size:1.1rem;margin:18px 0 4px;animation:fadein .6s ease}
 .result-count{text-align:center;font-size:.85rem;opacity:.85;margin-bottom:6px;animation:fadein .6s ease}
 .result-card{display:block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:14px;margin-top:10px;text-decoration:none;color:var(--text);animation:fadein .6s ease}
