@@ -25,6 +25,7 @@
 <h1>夢占い辞典</h1>
 <p class="intro">見た夢の内容を入力するだけで、夢の意味を無料で占えます。</p>
 <div class="search-box" id="search">
+  <div class="search-idle" id="search-idle">🔮</div>
   <input type="text" id="dream-input" placeholder="例：蛇に追いかけられて逃げる夢を見た" aria-label="夢の内容">
   <button class="btn btn-primary" onclick="searchDream()">🔮 この夢を占う</button>
   <div id="search-results"></div>
@@ -99,15 +100,20 @@ const DREAMS=[{"k":"犬","s":"忠誠心や友情のシンボル。信頼でき�
 function searchDream(){
   const input=document.getElementById('dream-input').value.trim();
   const box=document.getElementById('search-results');
-  if(!input){box.innerHTML='';return;}
+  const idle=document.getElementById('search-idle');
+  if(!input){box.innerHTML='';idle.style.display='';return;}
+  idle.style.display='none';
   // アプリと同じロジック：部分一致→長いキーワード優先で重複除去
   let hits=DREAMS.filter(d=>input.includes(d.k));
   hits=hits.filter(d=>!hits.some(o=>o.k!==d.k&&o.k.includes(d.k)));
   if(hits.length===0){
-    box.innerHTML='<p class="no-hit">キーワードが見つかりませんでした。「蛇」「歯が抜ける」など、夢に出てきたものを単語で入力してみてください。</p>';
-    return;
+    box.innerHTML='<p class="result-head">🌙 ✨ 🌙</p><p class="no-hit">キーワードが見つかりませんでした。「蛇」「歯が抜ける」など、夢に出てきたものを単語で入力してみてください。</p>';
+  }else{
+    box.innerHTML='<p class="result-head">✨ 占い結果 ✨</p>'
+      +'<p class="result-count">'+hits.length+'つのキーワードが見つかりました</p>'
+      +hits.map(d=>'<a class="result-card" href="k/'+encodeURIComponent(d.k)+'/"><span class="result-icon">🔮</span><strong>'+d.k+'</strong><span class="cat-badge">'+d.c+'</span><br>'+d.s+'<span class="result-more">くわしく見る →</span></a>').join('');
   }
-  box.innerHTML=hits.map(d=>'<a class="result-card" href="k/'+encodeURIComponent(d.k)+'/"><strong>'+d.k+'</strong><span class="cat-badge">'+d.c+'</span><br>'+d.s+'</a>').join('');
+  box.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 document.getElementById('dream-input').addEventListener('keydown',e=>{if(e.key==='Enter')searchDream();});
 </script>
