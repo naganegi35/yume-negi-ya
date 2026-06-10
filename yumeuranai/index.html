@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>夢占い辞典｜907個のキーワードから夢の意味を調べる - 夢ねぎ屋</title>
-<meta name="description" content="見た夢の意味をキーワードから無料で調べられる夢占い辞典。蛇・歯が抜ける・元カレ・追いかけられる夢など907件を収録。夢診断AIアプリの夢ねぎ屋が運営。">
+<title>夢占い辞典｜夢の内容を入力して無料で占う - 夢ねぎ屋</title>
+<meta name="description" content="見た夢の内容を入力するだけで意味がわかる無料の夢占い辞典。蛇・歯が抜ける・元カレ・追いかけられる夢など907件を収録。夢診断AIアプリの夢ねぎ屋が運営。">
 <link rel="canonical" href="https://naganegi35.github.io/yume-negi-ya/yumeuranai/">
-<meta property="og:title" content="夢占い辞典｜907個のキーワードから夢の意味を調べる - 夢ねぎ屋">
-<meta property="og:description" content="見た夢の意味をキーワードから無料で調べられる夢占い辞典。蛇・歯が抜ける・元カレ・追いかけられる夢など907件を収録。夢診断AIアプリの夢ねぎ屋が運営。">
+<meta property="og:title" content="夢占い辞典｜夢の内容を入力して無料で占う - 夢ねぎ屋">
+<meta property="og:description" content="見た夢の内容を入力するだけで意味がわかる無料の夢占い辞典。蛇・歯が抜ける・元カレ・追いかけられる夢など907件を収録。夢診断AIアプリの夢ねぎ屋が運営。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://naganegi35.github.io/yume-negi-ya/yumeuranai/">
 <meta property="og:image" content="https://naganegi35.github.io/yume-negi-ya/icon.png">
@@ -23,13 +23,16 @@
 </header>
 <main>
 <h1>夢占い辞典</h1>
-<p class="intro">気になる夢のキーワードから意味を調べられる、無料の夢占い辞典です。現在 <strong>907件</strong> を収録。<a href="https://naganegi35.github.io/yume-negi-ya/app/">Web版の夢占い</a>なら文章で入力するだけで自動診断できます。</p>
-<div class="cta">
-  <p class="cta-lead">気になる夢、もっと詳しく占ってみませんか？</p>
-  <a class="btn btn-primary" href="https://naganegi35.github.io/yume-negi-ya/app/">🌙 Webで無料夢占い</a>
-  <a class="btn btn-store" href="https://play.google.com/store/apps/details?id=com.yumekawanegi.yumemi" target="_blank" rel="noopener">Google Play でアプリを入手（夢日記つき）</a>
+<p class="intro">見た夢の内容を入力するだけで、夢の意味を無料で占えます。現在 <strong>907件</strong> のキーワードを収録。</p>
+<div class="search-box" id="search">
+  <input type="text" id="dream-input" placeholder="例：蛇に追いかけられて逃げる夢を見た" aria-label="夢の内容">
+  <button class="btn btn-primary" onclick="searchDream()">🔮 この夢を占う</button>
+  <div id="search-results"></div>
 </div>
-
+<div class="cta">
+  <p class="cta-lead">毎朝の夢を記録すると、心の変化が見えてきます。</p>
+  <a class="btn btn-store" href="https://play.google.com/store/apps/details?id=com.yumekawanegi.yumemi" target="_blank" rel="noopener">📓 夢日記をつけるなら無料アプリ（Google Play）</a>
+</div>
 <section class="cat-section">
 <h2>動物の夢（127件）</h2>
 <ul class="kw-list"><li><a href="k/犬/">犬</a></li><li><a href="k/猫/">猫</a></li><li><a href="k/蛇/">蛇</a></li><li><a href="k/馬/">馬</a></li><li><a href="k/牛/">牛</a></li><li><a href="k/豚/">豚</a></li><li><a href="k/羊/">羊</a></li><li><a href="k/ウサギ/">ウサギ</a></li><li><a href="k/熊/">熊</a></li><li><a href="k/狼/">狼</a></li><li><a href="k/狐/">狐</a></li><li><a href="k/象/">象</a></li><li><a href="k/虎/">虎</a></li><li><a href="k/ライオン/">ライオン</a></li><li><a href="k/キリン/">キリン</a></li><li><a href="k/サル/">サル</a></li><li><a href="k/ネズミ/">ネズミ</a></li><li><a href="k/カエル/">カエル</a></li><li><a href="k/サメ/">サメ</a></li><li><a href="k/クジラ/">クジラ</a></li><li><a href="k/イルカ/">イルカ</a></li><li><a href="k/魚/">魚</a></li><li><a href="k/金魚/">金魚</a></li><li><a href="k/鳥/">鳥</a></li><li><a href="k/ハト/">ハト</a></li><li><a href="k/カラス/">カラス</a></li><li><a href="k/フクロウ/">フクロウ</a></li><li><a href="k/ワシ/">ワシ</a></li><li><a href="k/白鳥/">白鳥</a></li><li><a href="k/ペンギン/">ペンギン</a></li><li><a href="k/タコ/">タコ</a></li><li><a href="k/蜘蛛/">蜘蛛</a></li><li><a href="k/蝶/">蝶</a></li><li><a href="k/蜂/">蜂</a></li><li><a href="k/亀/">亀</a></li><li><a href="k/ダチョウ/">ダチョウ</a></li><li><a href="k/フラミンゴ/">フラミンゴ</a></li><li><a href="k/コウモリ/">コウモリ</a></li><li><a href="k/ハリネズミ/">ハリネズミ</a></li><li><a href="k/オオカミ/">オオカミ</a></li><li><a href="k/パンダ/">パンダ</a></li><li><a href="k/チーター/">チーター</a></li><li><a href="k/サイ/">サイ</a></li><li><a href="k/カメレオン/">カメレオン</a></li><li><a href="k/オウム/">オウム</a></li><li><a href="k/インコ/">インコ</a></li><li><a href="k/アリ/">アリ</a></li><li><a href="k/クワガタ/">クワガタ</a></li><li><a href="k/カブトムシ/">カブトムシ</a></li><li><a href="k/ホタル/">ホタル</a></li><li><a href="k/カモメ/">カモメ</a></li><li><a href="k/ツバメ/">ツバメ</a></li><li><a href="k/ミツバチ/">ミツバチ</a></li><li><a href="k/トンボ/">トンボ</a></li><li><a href="k/セミ/">セミ</a></li><li><a href="k/ロバ/">ロバ</a></li><li><a href="k/ヤギ/">ヤギ</a></li><li><a href="k/ヒツジ/">ヒツジ</a></li><li><a href="k/クマノミ/">クマノミ</a></li><li><a href="k/ザリガニ/">ザリガニ</a></li><li><a href="k/コイ/">コイ</a></li><li><a href="k/フグ/">フグ</a></li><li><a href="k/ハムスター/">ハムスター</a></li><li><a href="k/モグラ/">モグラ</a></li><li><a href="k/シカ/">シカ</a></li><li><a href="k/イノシシ/">イノシシ</a></li><li><a href="k/サケ/">サケ</a></li><li><a href="k/アザラシ/">アザラシ</a></li><li><a href="k/ラッコ/">ラッコ</a></li><li><a href="k/ヒョウ/">ヒョウ</a></li><li><a href="k/アリクイ/">アリクイ</a></li><li><a href="k/ペリカン/">ペリカン</a></li><li><a href="k/クジャク/">クジャク</a></li><li><a href="k/フェニックス/">フェニックス</a></li><li><a href="k/ヒトデ/">ヒトデ</a></li><li><a href="k/クラゲ/">クラゲ</a></li><li><a href="k/エビ/">エビ</a></li><li><a href="k/カニ/">カニ</a></li><li><a href="k/マンタ/">マンタ</a></li><li><a href="k/カメレオン座/">カメレオン座</a></li><li><a href="k/チンパンジー/">チンパンジー</a></li><li><a href="k/ゴリラ/">ゴリラ</a></li><li><a href="k/ラマ/">ラマ</a></li><li><a href="k/アルパカ/">アルパカ</a></li><li><a href="k/マングース/">マングース</a></li><li><a href="k/ナマケモノ/">ナマケモノ</a></li><li><a href="k/タスマニアデビル/">タスマニアデビル</a></li><li><a href="k/アンコウ/">アンコウ</a></li><li><a href="k/タツノオトシゴ/">タツノオトシゴ</a></li><li><a href="k/コアラ/">コアラ</a></li><li><a href="k/カンガルー/">カンガルー</a></li><li><a href="k/カバ/">カバ</a></li><li><a href="k/カメ/">カメ</a></li><li><a href="k/クマ/">クマ</a></li><li><a href="k/ガゼル/">ガゼル</a></li><li><a href="k/タヌキ/">タヌキ</a></li><li><a href="k/キツネ/">キツネ</a></li><li><a href="k/チョウ/">チョウ</a></li><li><a href="k/コウノトリ/">コウノトリ</a></li><li><a href="k/テントウムシ/">テントウムシ</a></li><li><a href="k/ハチドリ/">ハチドリ</a></li><li><a href="k/犬に追いかけられる/">犬に追いかけられる</a></li><li><a href="k/犬に噛まれる/">犬に噛まれる</a></li><li><a href="k/犬を飼う/">犬を飼う</a></li><li><a href="k/犬がなつく/">犬がなつく</a></li><li><a href="k/犬が死ぬ/">犬が死ぬ</a></li><li><a href="k/犬を助ける/">犬を助ける</a></li><li><a href="k/猫に引っかかれる/">猫に引っかかれる</a></li><li><a href="k/猫を拾う/">猫を拾う</a></li><li><a href="k/猫が死ぬ/">猫が死ぬ</a></li><li><a href="k/蛇に噛まれる/">蛇に噛まれる</a></li><li><a href="k/蛇に追いかけられる/">蛇に追いかけられる</a></li><li><a href="k/蛇を見る/">蛇を見る</a></li><li><a href="k/蛇を触る/">蛇を触る</a></li><li><a href="k/蛇に巻きつかれる/">蛇に巻きつかれる</a></li><li><a href="k/蛇を殺す/">蛇を殺す</a></li><li><a href="k/白い蛇/">白い蛇</a></li><li><a href="k/大きな蛇/">大きな蛇</a></li><li><a href="k/蛇がたくさん/">蛇がたくさん</a></li><li><a href="k/蛇が脱皮する/">蛇が脱皮する</a></li><li><a href="k/ペットが死ぬ/">ペットが死ぬ</a></li><li><a href="k/虫/">虫</a></li><li><a href="k/ゴキブリ/">ゴキブリ</a></li><li><a href="k/蜂に刺される/">蜂に刺される</a></li><li><a href="k/黒猫/">黒猫</a></li><li><a href="k/白猫/">白猫</a></li><li><a href="k/子猫/">子猫</a></li></ul>
@@ -91,6 +94,23 @@
 <h2>宗教の夢（15件）</h2>
 <ul class="kw-list"><li><a href="k/十字架/">十字架</a></li><li><a href="k/仏像/">仏像</a></li><li><a href="k/お守り/">お守り</a></li><li><a href="k/聖書/">聖書</a></li><li><a href="k/祈り/">祈り</a></li><li><a href="k/瞑想/">瞑想</a></li><li><a href="k/悟り/">悟り</a></li><li><a href="k/輪廻/">輪廻</a></li><li><a href="k/神/">神</a></li><li><a href="k/仏/">仏</a></li><li><a href="k/お祈り/">お祈り</a></li><li><a href="k/菩薩/">菩薩</a></li><li><a href="k/お盆/">お盆</a></li><li><a href="k/修行/">修行</a></li><li><a href="k/ご神木/">ご神木</a></li></ul>
 </section>
+<script src="data.js"></script>
+<script>
+function searchDream(){
+  const input=document.getElementById('dream-input').value.trim();
+  const box=document.getElementById('search-results');
+  if(!input){box.innerHTML='';return;}
+  // アプリと同じロジック：部分一致→長いキーワード優先で重複除去
+  let hits=DREAMS.filter(d=>input.includes(d.k));
+  hits=hits.filter(d=>!hits.some(o=>o.k!==d.k&&o.k.includes(d.k)));
+  if(hits.length===0){
+    box.innerHTML='<p class="no-hit">キーワードが見つかりませんでした。「蛇」「歯が抜ける」など、夢に出てきたものを単語で入力してみてください。</p>';
+    return;
+  }
+  box.innerHTML=hits.map(d=>'<a class="result-card" href="k/'+encodeURIComponent(d.k)+'/"><strong>'+d.k+'</strong><span class="cat-badge">'+d.c+'</span><br>'+d.s+'</a>').join('');
+}
+document.getElementById('dream-input').addEventListener('keydown',e=>{if(e.key==='Enter')searchDream();});
+</script>
 
 </main>
 <footer>
