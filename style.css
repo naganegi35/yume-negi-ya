@@ -399,3 +399,16 @@ footer {
     gap: 1.2rem;
   }
 }
+
+/* お問い合わせフォーム埋め込み */
+.form-embed {
+  margin: 1.5em 0;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.form-embed iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+}
