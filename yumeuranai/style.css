@@ -37,3 +37,39 @@ h2{font-size:1.1rem;margin:24px 0 12px}
 .result-more{display:block;text-align:right;font-size:.8rem;color:#c4b5fd;margin-top:4px}
 @keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .no-hit{margin-top:12px;opacity:.85;animation:fadein .6s ease}
+
+/* ===== 拡充ページ用（段落・小見出し・箇条書き） ===== */
+article p{margin:0 0 14px}
+article p:last-child{margin-bottom:0}
+article strong{color:#fff}
+
+h2{
+  font-size:1.15rem;
+  margin:32px 0 12px;
+  padding-left:12px;
+  border-left:3px solid var(--purple);
+  line-height:1.5;
+}
+article h3{
+  font-size:1rem;
+  margin:20px 0 6px;
+  color:#c4b5fd;
+  line-height:1.6;
+}
+article ul:not(.chips){
+  list-style:none;
+  margin:12px 0 18px;
+  padding-left:2px;
+}
+article ul:not(.chips) li{
+  position:relative;
+  padding:4px 0 4px 20px;
+}
+article ul:not(.chips) li::before{
+  content:'✦';
+  position:absolute;
+  left:0;
+  top:.6rem;
+  color:#a78bfa;
+  font-size:.72rem;
+}
