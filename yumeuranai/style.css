@@ -73,3 +73,11 @@ article ul:not(.chips) li::before{
   color:#a78bfa;
   font-size:.72rem;
 }
+
+.pr-note{font-size:.72rem;opacity:.7;margin-bottom:6px}
+.pr-label{display:inline-block;font-size:.68rem;font-weight:bold;border:1px solid rgba(255,255,255,.5);border-radius:4px;padding:0 6px;margin-right:4px;vertical-align:middle;line-height:1.6}
+.ad-box{background:var(--card);border-radius:14px;padding:14px 16px 16px;margin:28px 0;text-align:center}
+.ad-box .pr-label{float:left}
+.ad-lead{font-size:.9rem;margin:0 0 10px;clear:both;padding-top:4px}
+.ad-box a img{max-width:100%;height:auto;border-radius:8px}
+.ad-text{font-size:.88rem;margin:24px 0;padding:10px 14px;border-left:3px solid rgba(255,255,255,.3)}
