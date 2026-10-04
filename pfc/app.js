@@ -104,7 +104,7 @@
     var html = '';
     ['P', 'F', 'C'].forEach(function (g) {
       var meta = GROUP_LABEL[g];
-      html += '<div class="food-h">' + meta[0] + '</div>';
+      html += '<div class="food-h">' + meta[0] + '（1日の目標 ' + fmt(res[g]) + ' g）</div>';
       SHOW[g].forEach(function (item) {
         var f = food(item.name);
         if (!f) return;
@@ -187,7 +187,7 @@
       ctx.fillStyle = '#6B6460'; ctx.font = '32px ' + font; ctx.fillText(Math.round(r.pct[c[1]]) + '%', c[2], 860);
     });
     ctx.fillStyle = '#4F4A47'; ctx.font = '34px ' + font; ctx.textAlign = 'left';
-    ctx.fillText('たとえば（たんぱく質）', 120, 960);
+    ctx.fillText('たとえば（たんぱく質・1日の目標 ' + fmt(r.P) + ' g）', 120, 960);
     var y = 1020;
     SHOW.P.forEach(function (item) {
       var f = food(item.name); if (!f) return;
