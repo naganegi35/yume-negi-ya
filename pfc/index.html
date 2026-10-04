@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>自分に合うPFC計算｜1日の目安カロリーとPFCバランス（仮）</title>
+<meta name="description" content="性別・年齢・身長・体重・活動量から、1日の目安カロリーとPFCバランスを計算します。結果は食材の量に置き換えて表示し、画像で保存できます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yomogi&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="col">
+  <h1>自分に合うPFC計算</h1>
+  <p class="lead">1日にどれくらい食べていいか、目安を出してみよう。</p>
+
+  <form id="form" novalidate>
+    <div class="step">1　からだのことを入力</div>
+    <div class="box">
+      <div class="row"><span class="lab">性別</span>
+        <div class="chips">
+          <input type="radio" name="sex" id="sex-f" value="female" checked><label for="sex-f" class="chip">女性</label>
+          <input type="radio" name="sex" id="sex-m" value="male"><label for="sex-m" class="chip">男性</label>
+        </div></div>
+      <div class="row"><label class="lab" for="age">年齢</label><input class="inp" id="age" type="number" inputmode="numeric" min="18" max="74" placeholder="30"><span class="unit">歳</span></div>
+      <div class="row"><label class="lab" for="height">身長</label><input class="inp" id="height" type="number" inputmode="decimal" step="0.1" placeholder="158"><span class="unit">cm</span></div>
+      <div class="row"><label class="lab" for="weight">体重</label><input class="inp" id="weight" type="number" inputmode="decimal" step="0.1" placeholder="53"><span class="unit">kg</span></div>
+      <div class="row"><span class="lab">活動量</span>
+        <div class="chips">
+          <input type="radio" name="pal" id="pal-l" value="low"><label for="pal-l" class="chip">低い</label>
+          <input type="radio" name="pal" id="pal-n" value="normal" checked><label for="pal-n" class="chip">ふつう</label>
+          <input type="radio" name="pal" id="pal-h" value="high"><label for="pal-h" class="chip">高い</label>
+        </div></div>
+      <p class="hint">低い＝座っていることが多い／ふつう＝座位中心だが通勤・家事・軽い運動がある／高い＝立ち仕事や活発な運動習慣がある</p>
+      <details class="bf">
+        <summary>体脂肪率がわかる方（任意）</summary>
+        <div class="row"><label class="lab" for="bodyfat">体脂肪率</label><input class="inp" id="bodyfat" type="number" inputmode="decimal" step="0.1" placeholder="空欄でOK"><span class="unit">%</span></div>
+        <p class="hint">入力すると、基礎代謝をKatch-McArdle式で計算します。体組成計は測定条件で数値が変わるため、結果がずれることがあります。</p>
+      </details>
+    </div>
+
+    <div class="step">2　目的をえらぶ</div>
+    <div class="box">
+      <div class="chips">
+        <input type="radio" name="goal" id="g-m" value="maintain"><label for="g-m" class="chip">維持</label>
+        <input type="radio" name="goal" id="g-l" value="lose" checked><label for="g-l" class="chip">減量</label>
+        <input type="radio" name="goal" id="g-g" value="gain"><label for="g-g" class="chip">増量</label>
+      </div>
+      <div id="pace-lose" class="pace">
+        <div class="sm">1か月で体重の</div>
+        <div class="chips">
+          <input type="radio" name="losePct" id="l1" value="1"><label for="l1" class="chip">1%</label>
+          <input type="radio" name="losePct" id="l2" value="2" checked><label for="l2" class="chip">2%</label>
+          <input type="radio" name="losePct" id="l3" value="3"><label for="l3" class="chip">3%</label>
+        </div>
+      </div>
+      <div id="pace-gain" class="pace" hidden>
+        <div class="sm">増やし方</div>
+        <div class="chips">
+          <input type="radio" name="gainPct" id="gp5" value="5" checked><label for="gp5" class="chip">ゆっくり（+5%）</label>
+          <input type="radio" name="gainPct" id="gp10" value="10"><label for="gp10" class="chip">しっかり（+10%）</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">3　モードをえらぶ</div>
+    <div class="box">
+      <div class="chips">
+        <input type="radio" name="mode" id="md-s" value="standard" checked><label for="md-s" class="chip">標準（厚労省の範囲）</label>
+        <input type="radio" name="mode" id="md-p" value="sport"><label for="md-p" class="chip">運動している</label>
+      </div>
+      <p class="hint" id="mode-hint">標準：厚生労働省「日本人の食事摂取基準（2025年版）」の範囲で出します。</p>
+    </div>
+
+    <div id="errors" class="errors" role="alert" hidden></div>
+    <div class="center"><button type="submit" class="btn">計算する</button></div>
+  </form>
+
+  <section id="result" hidden>
+    <div class="step">4　結果</div>
+    <div class="res">
+      <div class="sm">1日の目標カロリー</div>
+      <div class="big" id="r-target"></div>
+      <div class="sm" id="r-sub"></div>
+      <p class="warn" id="r-notes" hidden></p>
+    </div>
+    <div class="res">
+      <div class="sm">P・F・C の目安（1日）</div>
+      <div class="barwrap" id="r-bars"></div>
+      <div class="pfc" id="r-pfc"></div>
+      <p class="hint" id="r-range"></p>
+    </div>
+    <div class="res" id="r-foods"></div>
+    <div class="center"><button type="button" class="btn" id="save">この結果を画像で保存</button></div>
+    <canvas id="cv" width="1080" height="1350" hidden></canvas>
+  </section>
+
+  <div class="note">
+    ※数字は目安です。個人差があり、医療アドバイスではありません。18〜74歳の健康な方向けです。妊娠・授乳中の方、持病のある方、医師から食事の指示を受けている方は、医師や管理栄養士に相談してください。<br>
+    ※減量・増量のカロリー調整は一般的な目安です（1か月の減量ペースは、脂肪1kg＝約7,200kcalという大まかな近似で計算しています）。<br>
+    ※「運動している」モードは、厚生労働省の範囲ではありません。たんぱく質は体重1kgあたり1.6gで計算しています（運動をしている人は1.4〜2.0g／kg／日で十分とされる、国際スポーツ栄養学会の見解の範囲内）。<br>
+    ※食材の量（1個・1杯など）は目安として仮置きした量です。食材のたんぱく質・脂質・炭水化物は成分表の値、カロリーはP×4＋F×9＋C×4で計算するため、成分表のkcalとは少し異なります。<br>
+    出典：<br>
+    ・日本食品標準成分表（八訂）増補2023年から引用（文部科学省）<br>
+    ・日本人の食事摂取基準（2025年版）（厚生労働省）<br>
+    ・基礎代謝：国立健康・栄養研究所の式（Ganpule et al., 2007）／体脂肪率入力時はKatch-McArdle式<br>
+    ・International Society of Sports Nutrition position stand: protein and exercise（Jäger et al., 2017）
+  </div>
+</main>
+<script src="foods.js"></script>
+<script src="calc.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
