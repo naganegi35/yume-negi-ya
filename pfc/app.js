@@ -162,9 +162,9 @@
   function drawImage() {
     var cv = $('cv'), ctx = cv.getContext('2d'), r = last.res;
     var font = "'Yomogi','Hiragino Maru Gothic ProN','Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif";
-    ctx.clearRect(0, 0, 1080, 1350);
-    ctx.fillStyle = '#EDE5DF'; ctx.fillRect(0, 0, 1080, 1350);
-    ctx.fillStyle = '#fff'; roundRect(ctx, 60, 60, 960, 1260, 48); ctx.fill();
+    ctx.clearRect(0, 0, 1080, 1420);
+    ctx.fillStyle = '#EDE5DF'; ctx.fillRect(0, 0, 1080, 1420);
+    ctx.fillStyle = '#fff'; roundRect(ctx, 60, 60, 960, 1300, 48); ctx.fill();
     ctx.textAlign = 'center'; ctx.fillStyle = '#4F4A47';
     ctx.font = '56px ' + font; ctx.fillText('自分に合うPFC計算', 540, 170);
     ctx.fillStyle = '#6B6460'; ctx.font = '36px ' + font;
@@ -200,6 +200,8 @@
     ctx.fillText('※目安です。医療アドバイスではありません。', 540, 1250);
     ctx.font = '22px ' + font;
     ctx.fillText('出典：日本食品標準成分表（八訂）増補2023年／日本人の食事摂取基準（2025年版）ほか', 540, 1280);
+    ctx.fillStyle = '#8A6F6A'; ctx.font = '28px ' + font;
+    ctx.fillText('簡単！PFCバランス計算　yumenegiya.com/pfc/', 540, 1332);
   }
   $('save').addEventListener('click', function () {
     if (!last) return;

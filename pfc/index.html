@@ -3,16 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>自分に合うPFC計算｜1日の目安カロリーとPFCバランス（仮）</title>
-<meta name="description" content="性別・年齢・身長・体重・活動量から、1日の目安カロリーとPFCバランスを計算します。結果は食材の量に置き換えて表示し、画像で保存できます。">
+<title>簡単！PFCバランス計算｜1日の目安カロリーと食材の量がわかる無料ツール</title>
+<meta name="description" content="性別・年齢・身長・体重・活動量を入れるだけで、1日の目安カロリーとPFCバランス（たんぱく質・脂質・炭水化物）を自動計算。結果は食材の量に置き換えて表示し、画像で保存できます。登録不要・無料。">
+<link rel="canonical" href="https://yumenegiya.com/pfc/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="簡単！PFCバランス計算">
+<meta property="og:title" content="簡単！PFCバランス計算｜1日の目安カロリーと食材の量がわかる無料ツール">
+<meta property="og:description" content="性別・年齢・身長・体重・活動量から、1日の目安カロリーとPFCバランスを自動計算。結果は食材の量に置き換えて、画像で保存できます。">
+<meta property="og:url" content="https://yumenegiya.com/pfc/">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"簡単！PFCバランス計算","url":"https://yumenegiya.com/pfc/","description":"性別・年齢・身長・体重・活動量から、1日の目安カロリーとPFCバランス（たんぱく質・脂質・炭水化物）を自動計算し、食材の量に置き換えて表示する無料ツール。","applicationCategory":"HealthApplication","operatingSystem":"Any","inLanguage":"ja","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Yomogi&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 <main class="col">
-  <h1>自分に合うPFC計算</h1>
+  <h1>簡単！PFCバランス計算</h1>
   <p class="lead">1日にどれくらい食べていいか、目安を出してみよう。</p>
 
   <form id="form" novalidate>
@@ -93,8 +104,33 @@
     </div>
     <div class="res" id="r-foods"></div>
     <div class="center"><button type="button" class="btn" id="save">この結果を画像で保存</button></div>
-    <canvas id="cv" width="1080" height="1350" hidden></canvas>
+    <canvas id="cv" width="1080" height="1420" hidden></canvas>
   </section>
+
+  <article class="guide">
+    <h2>PFCバランスとは</h2>
+    <p>PFCバランスとは、1日に摂るエネルギーのうち、<b>たんぱく質（Protein）・脂質（Fat）・炭水化物（Carbohydrate）</b>がそれぞれどれくらいの割合を占めるかを表したものです。1gあたりのエネルギーは、一般にたんぱく質4kcal・脂質9kcal・炭水化物4kcalとされています。</p>
+
+    <h2>PFCバランスの計算のしかた</h2>
+    <ol>
+      <li><b>基礎代謝を求める</b>：国立健康・栄養研究所の式（Ganpule et al., 2007）を使います。<br>男性：（0.0481×体重kg＋0.0234×身長cm−0.0138×年齢−0.4235）×1000÷4.186<br>女性：同じ式で、定数を−0.9708にします。<br>体脂肪率が分かる場合は、Katch-McArdle式（370＋21.6×除脂肪体重kg）で求めます。</li>
+      <li><b>1日の消費カロリーを求める</b>：基礎代謝に、身体活動レベル（低い1.50／ふつう1.75／高い2.00。65〜74歳は1.50／1.70／1.90）をかけます。数値は、厚生労働省「日本人の食事摂取基準（2025年版）」によるものです。</li>
+      <li><b>目標カロリーを決める</b>：維持なら消費カロリーと同じ、減量なら1か月で体重の1〜3%を落とす量を引き、増量なら5〜10%を足します。減量・増量の調整は一般的な目安です（脂肪1kg＝約7,200kcalという大まかな近似を使っています）。</li>
+      <li><b>P・F・Cに分ける</b>：目標カロリーを、下の2つのモードのどちらかでたんぱく質・脂質・炭水化物に分けます。</li>
+    </ol>
+
+    <h2>「標準」モードと「運動している」モードの違い</h2>
+    <p><b>標準モード</b>は、厚生労働省「日本人の食事摂取基準（2025年版）」の目標量（18〜49歳：たんぱく質13〜20%、脂質20〜30%、炭水化物50〜65%）の範囲で出します。</p>
+    <p><b>運動しているモード</b>は、たんぱく質を体重1kgあたり1.6gとして計算します。運動をしている人には、体重1kgあたり1.4〜2.0gで足りるとする国際スポーツ栄養学会の見解（Jäger et al., 2017）の範囲内です。脂質は目標カロリーの25%、炭水化物は残りです。厚生労働省の範囲とは異なります。</p>
+
+    <h2>よくある質問</h2>
+    <details><summary>PFCバランスの理想の比率は？</summary><p>厚生労働省の目標量（18〜49歳）は、たんぱく質13〜20%、脂質20〜30%、炭水化物50〜65%です。年齢が上がるとたんぱく質の下限が上がります（50〜64歳は14%、65歳以上は15%）。範囲は「おおむねの値」とされ、個人差や運動量で変わります。</p></details>
+    <details><summary>体脂肪率は入力しないといけませんか？</summary><p>いいえ。空欄でも計算できます。体脂肪率が分かる場合だけ入力すると、基礎代謝の求め方が変わります。体組成計は測る時間や体の水分で数値が変わるため、結果がずれることがあります。</p></details>
+    <details><summary>結果の数字は正確ですか？</summary><p>目安です。基礎代謝の式は推定式で、体質や筋肉量によって実際とは差があります。医療アドバイスではありません。持病がある方、妊娠・授乳中の方、医師から食事の指示を受けている方は、医師や管理栄養士に相談してください。</p></details>
+    <details><summary>入力した身長・体重はどこかに送られますか？</summary><p>送られません。計算は、お使いのブラウザの中だけで行います。会員登録も不要で、無料です。</p></details>
+    <details><summary>食材の量はどのくらい正確ですか？</summary><p>食材のたんぱく質・脂質・炭水化物の数値は、日本食品標準成分表（八訂）増補2023年（文部科学省）から引用しています。1個・1杯などのグラム数は目安として置いた量なので、実際とは差があります。</p></details>
+    <details><summary>どんな人が使えますか？</summary><p>18〜74歳の健康な方が対象です。それ以外の方や、特別な食事制限がある方には向きません。</p></details>
+  </article>
 
   <div class="note">
     ※数字は目安です。個人差があり、医療アドバイスではありません。18〜74歳の健康な方向けです。妊娠・授乳中の方、持病のある方、医師から食事の指示を受けている方は、医師や管理栄養士に相談してください。<br>
@@ -108,8 +144,8 @@
     ・International Society of Sports Nutrition position stand: protein and exercise（Jäger et al., 2017）
   </div>
 </main>
-<script src="foods.js?v=2"></script>
-<script src="calc.js?v=2"></script>
-<script src="app.js?v=2"></script>
+<script src="foods.js?v=3"></script>
+<script src="calc.js?v=3"></script>
+<script src="app.js?v=3"></script>
 </body>
 </html>
